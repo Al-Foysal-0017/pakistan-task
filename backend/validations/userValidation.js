@@ -10,6 +10,15 @@ module.exports.registerValidations = [
     .withMessage("Email is required."),
   body("password")
     .isLength({ min: 5 })
-    .trim()
     .withMessage("Password should be 5 characters long."),
+];
+
+module.exports.loginValidations = [
+  body("email")
+    .isEmail()
+    .normalizeEmail()
+    .trim()
+    .escape()
+    .withMessage("Email is required."),
+  body("password").not().isEmpty().withMessage("Password is required."),
 ];
