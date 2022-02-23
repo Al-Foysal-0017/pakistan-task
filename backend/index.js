@@ -1,8 +1,11 @@
 const express = require("express");
 const env = require("./config/envConfig.js");
+const cors = require("cors");
 const connect = require("./config/db.js");
 const userRoutes = require("./routes/users/userRoutes.js");
 const app = express();
+
+app.use(cors());
 
 //database connection call
 connect();
