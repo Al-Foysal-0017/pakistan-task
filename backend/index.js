@@ -1,27 +1,29 @@
 const express = require("express");
-const env = require("./config/envConfig.js");
-const cors = require("cors");
-const connect = require("./config/db.js");
-const userRoutes = require("./routes/users/userRoutes.js");
+var cors = require("cors");
+const bodyParser = require("body-parser");
+const connect = require("./config/db");
+const path = require("path");
+const router = require("./routes/userRoutes");
+const postRoutes = require("./routes/postRoutes");
+const profileRoutes = require("./routes/profileRoutes");
+require("dotenv").config();
 const app = express();
 
 app.use(cors());
 
-//database connection call
+// connect mongodb database
 connect();
-
-// add middaleware
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("Naiem");
-});
-
-// user Routes
-app.use("/api", userRoutes);
-
-const port = env.PORT || 6000;
-
-app.listen(port, () => {
-  console.log(`Server is running on Port: ${port}`);
+app.use(bodyParser.json());
+app.use("/", router);
+app.use("/", postRoutes);
+app.use("/", profileRoutes);
+const PORT = process.env.PORT || 5000;
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build/")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+app.listen(PORT, () => {
+  console.log("Your app is running");
 });
