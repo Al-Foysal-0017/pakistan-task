@@ -1,7 +1,7 @@
 const Post = require("../models/Post");
 
 module.exports.createPost = async (req, res) => {
-  const { title, description, slug, id, name } = req.body;
+  const { title, description, slug, id, name, image } = req.body;
   console.log(req.body);
   try {
     const response = await Post.create({
@@ -10,6 +10,7 @@ module.exports.createPost = async (req, res) => {
       slug,
       userName: name,
       userId: id,
+      image,
     });
     return res.status(200).json({
       msg: "Your post has been created successfully",

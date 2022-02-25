@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdminPost, updateAction } from "../../../store/actions/post.action";
 // import toast, { Toaster } from "react-hot-toast";
+import FileBase from "react-file-base64";
 
 const AdminDashboard = (props) => {
   const { createErrors, redirect, loading } = useSelector(
@@ -63,7 +64,7 @@ const AdminDashboard = (props) => {
   const createPost = (e) => {
     e.preventDefault();
     const { title, description, image } = state;
-    dispatch(setAdminPost({ title, description, slug, id: _id, name }));
+    dispatch(setAdminPost({ title, description, slug, id: _id, name, image }));
   };
   useEffect(() => {
     if (redirect) {
@@ -94,7 +95,12 @@ const AdminDashboard = (props) => {
                     placeholder="Post title..."
                   />
                 </div>
-                <div className="group">
+                <FileBase
+                  // type="file"
+                  // multiple={false}
+                  onDone={({ base64 }) => setState({ ...state, image: base64 })}
+                />
+                {/* <div className="group">
                   {currentImage && (
                     <label htmlFor="image" className="image__label">
                       Choosing Image : {currentImage}
@@ -113,7 +119,7 @@ const AdminDashboard = (props) => {
                     placeholder="Post title ..."
                     onChange={fileHandle}
                   />
-                </div>
+                </div> */}
                 <div className="group">
                   <label htmlFor="body">Post body</label>
                   <ReactQuill

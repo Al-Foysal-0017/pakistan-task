@@ -18,6 +18,13 @@ const Lectures = () => {
           key={index}
           style={{ border: "2px solid #000", marginTop: "16px" }}
         >
+          <div>
+            <img
+              style={{ width: "50px", height: "50px" }}
+              src={item?.image}
+              alt=""
+            />
+          </div>
           <div>{item?.title}</div>
           <div>{item?.userName}</div>
           <div>{item?.description}</div>
