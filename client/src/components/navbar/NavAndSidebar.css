@@ -1,11 +1,14 @@
 /* FOR NAVBAR PART */
+.navbarAndSidebar {
+  box-shadow: 0 0.3rem 3rem rgba(0, 0, 0, 0.1);
+}
+
 .navbarContainer {
   display: flex;
   align-items: center;
   /* background: black; */
   /* color: #fff; */
   height: 80px;
-  box-shadow: 0 0.3rem 3rem rgba(0, 0, 0, 0.1);
 }
 .navbarContainerWrapper {
   display: flex;
@@ -24,7 +27,7 @@
   padding: 0;
 }
 .navbarContainerLogo {
-  padding: 0 20px;
+  /* padding: 0 20px; */
   font-size: 28px;
   font-weight: bolder;
 }
@@ -45,14 +48,16 @@
 .setSidebarForToggle {
   position: fixed;
   height: 100vh;
-  width: 200px;
-  overflow: scroll;
+  width: 250px;
+  overflow: auto;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 9999;
-  padding: 40px 20px; /*This is for main width & hide in Sidebar */
-  background: yellowgreen;
+  padding: 40px 20px;
+  -webkit-box-shadow: inset 0px 1px 13px -2px rgba(0, 0, 0, 0.97);
+  box-shadow: inset 0px 1px 13px -2px rgba(0, 0, 0, 0.97);
+  background: #fff;
 }
 .SidebarToggleBtn {
   border: none;
@@ -65,17 +70,18 @@
 .SidebarItem {
   padding: 3px 0;
 }
-.SidebarItem:hover {
+/* .SidebarItem:hover {
   font-size: 20px;
-}
+} */
 .link {
   text-decoration: none;
-  color: blue;
-  font-weight: bolder;
+  /* color: blue; */
+  font-weight: 600;
 }
 .activeClassNameOfSidebar {
-  font-size: 20px;
-  color: red;
+  /* font-size: 20px; */
+  color: blue;
+  font-weight: 700;
 }
 .transform {
   --tw-translate-x: 0;

@@ -12,6 +12,7 @@ import Lectures from "./pages/lectures";
 import "./_app.scss";
 import AboutUs from "./pages/about-us";
 import ContactUs from "./pages/contact-us";
+import AdminRoute from "./private/AdminRoute";
 // import Footer from "./components/footer/Footer";
 
 const App = () => {
@@ -35,7 +36,7 @@ const App = () => {
         <Route path="/lectures" exact component={Lectures} />
         <RouteLinks path="/register" exact component={Register} />
         <RouteLinks path="/login" exact component={Login} />
-        <Route path="/admin-dashboard" exact component={AdminDashboard} />
+        <AdminRoute path="/admin-dashboard" exact component={AdminDashboard} />
       </Switch>
     </div>
   );

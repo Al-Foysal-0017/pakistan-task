@@ -11,6 +11,10 @@
     justify-content: flex-end;
     align-items: center;
     margin-left: 2rem;
+
+    img {
+      width: 600px;
+    }
   }
 
   &__content {
@@ -48,6 +52,16 @@
       font-weight: 600;
       cursor: pointer;
       margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: $laptop) {
+  .home-hero {
+    &__projectImg {
+      img {
+        width: 450px;
+      }
     }
   }
 }

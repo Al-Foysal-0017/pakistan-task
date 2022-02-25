@@ -37,15 +37,7 @@ const Hero = () => {
           // animate={controls}
           // transition={{ type: "tween", duration: 0.5 }}
         >
-          <img
-            src={hero}
-            alt="home-hero"
-            style={{
-              maxWidth: "600px",
-              maxHeight: "550px",
-              // width: "400px",
-            }}
-          />
+          <img src={hero} alt="home-hero" />
         </div>
       </div>
     </>

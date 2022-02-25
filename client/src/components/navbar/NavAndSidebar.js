@@ -6,11 +6,13 @@ import { navRoutes, navRoutesRight } from "./NavLinks";
 import logo from "../../assets/images/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { LOGOUT } from "../../store/types";
+import Container from "../container/index";
 
 const MobileNav = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user } = useSelector((state) => state.auth);
-  // console.log("USER:>", user);
+
+  console.log("USER:>", user);
   const dispatch = useDispatch();
   const logout = () => {
     localStorage.removeItem("myToken");
@@ -20,7 +22,7 @@ const MobileNav = () => {
   return (
     <header className="navbarAndSidebar">
       {/* NAVBAR PART */}
-      <nav className="navbarContainer">
+      <Container className="navbarContainer">
         <div className="navbarContainerWrapper">
           {/* LEFT NAVBAR */}
           <div className="navbarContainerLeft">
@@ -28,7 +30,7 @@ const MobileNav = () => {
               <Hamburger
                 toggle={setOpenSidebar}
                 toggled={openSidebar}
-                color="#000"
+                color="#6C63FF"
               />
             </div>
             <div className="navbarContainerLogo">
@@ -48,6 +50,16 @@ const MobileNav = () => {
           </div>
           {/* RIGHT NAVBAR */}
           <div className="navbarContainerRightItems">
+            {user.admin && (
+              <NavLink
+                className="link"
+                activeClassName="activeClassNameOfSidebar"
+                exact
+                to="/admin-dashboard"
+              >
+                Admin
+              </NavLink>
+            )}
             {navRoutesRight.map((item) => (
               <div key={item.name} className="navbarContainerRightItem">
                 <NavLink
@@ -60,12 +72,33 @@ const MobileNav = () => {
                 </NavLink>
               </div>
             ))}
-            <button onClick={logout}>Logout</button>
+            {user ? (
+              <button onClick={logout}>Logout</button>
+            ) : (
+              <>
+                <NavLink
+                  className="link"
+                  activeClassName="activeClassNameOfSidebar"
+                  exact
+                  to="/login"
+                >
+                  Sign in
+                </NavLink>
+                <NavLink
+                  className="link"
+                  activeClassName="activeClassNameOfSidebar"
+                  exact
+                  to="/register"
+                >
+                  Sign up
+                </NavLink>
+              </>
+            )}
 
             {user && user?.name}
           </div>
         </div>
-      </nav>
+      </Container>
       {/* SIDEBAR PART */}
       <div
         className={`
@@ -74,12 +107,16 @@ const MobileNav = () => {
                 }
                 setSidebarForToggle transform transition-all duration-300`}
       >
-        <button
+        {/* <button
           className="SidebarToggleBtn"
           onClick={() => setOpenSidebar(false)}
-        >
-          X
-        </button>
+        ></button> */}
+        <Hamburger
+          toggle={setOpenSidebar}
+          toggled={openSidebar}
+          color="#6C63FF"
+        />
+        <div style={{ marginTop: "3rem" }} />
         <ul className="SidebarItems">
           {navRoutes.map((item) => (
             <li key={item.name} className="SidebarItem">
@@ -88,14 +125,14 @@ const MobileNav = () => {
                 activeClassName="activeClassNameOfSidebar"
                 exact
                 to={item.route}
+                onClick={() => setOpenSidebar(false)}
               >
-                {item.name}
+                <div style={{ margin: "8px 0" }}>{item.name}</div>
               </NavLink>
             </li>
           ))}
         </ul>
 
-        <h2 className="">Our categories</h2>
         <ul className="SidebarItems">
           {navRoutesRight.map((item) => (
             <li key={item.name} className="SidebarItem">
@@ -104,6 +141,7 @@ const MobileNav = () => {
                 activeClassName="activeClassNameOfSidebar"
                 exact
                 to={item.route}
+                onClick={() => setOpenSidebar(false)}
               >
                 {item.name}
               </NavLink>

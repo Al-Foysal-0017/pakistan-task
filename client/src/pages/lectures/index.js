@@ -14,10 +14,7 @@ const Lectures = () => {
   }, [dispatch]);
 
   const { redirect, message, loading } = useSelector((state) => state.post);
-  // const {
-  //   user: { _id },
-  //   token,
-  // } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     if (redirect) {
       dispatch({ type: REDIRECT_FALSE });
@@ -38,24 +35,30 @@ const Lectures = () => {
           },
         }}
       />
-      <h1>Lecture</h1>
-      {posts?.map((item, index) => (
-        <div
-          key={index}
-          style={{ border: "2px solid #000", marginTop: "16px" }}
-        >
-          <div>
-            <img
-              style={{ width: "50px", height: "50px" }}
-              src={item?.image}
-              alt=""
-            />
-          </div>
-          <div>{item?.title}</div>
-          <div>{item?.userName}</div>
-          <div>{item?.description}</div>
-        </div>
-      ))}
+      <h1>All Lectures</h1>
+      {user ? (
+        <>
+          {posts?.map((item, index) => (
+            <div
+              key={index}
+              style={{ border: "2px solid #000", marginTop: "16px" }}
+            >
+              <div>
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src={item?.image}
+                  alt=""
+                />
+              </div>
+              <div>{item?.title}</div>
+              <div>{item?.userName}</div>
+              <div>{item?.description}</div>
+            </div>
+          ))}
+        </>
+      ) : (
+        "Please Login First"
+      )}
     </div>
   );
 };
