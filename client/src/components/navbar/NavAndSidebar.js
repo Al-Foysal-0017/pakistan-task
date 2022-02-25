@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Squash as Hamburger } from "hamburger-react";
 import "./NavAndSidebar.css";
 import { navRoutes, navRoutesRight } from "./NavLinks";
-import logo from "../../assets/images/logo.jpg";
+import logo from "../../assets/images/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 
 const MobileNav = () => {
@@ -35,7 +35,6 @@ const MobileNav = () => {
                     style={{
                       height: "60px",
                       borderRadius: "16px",
-                      border: "1px solid #000",
                     }}
                   />
                 </Link>

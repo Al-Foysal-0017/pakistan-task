@@ -27,7 +27,7 @@ const Login = () => {
   //   }
   // }, [loginErrors]);
   return (
-    <div>
+    <div style={{ minHeight: "100vh" }}>
       <form onSubmit={userLogin}>
         <div className="group">
           <h3 className="form-heading">Login</h3>

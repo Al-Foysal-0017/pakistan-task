@@ -9,6 +9,8 @@ import Register from "./pages/register";
 import RouteLinks from "./private/RouteLinks";
 import AdminDashboard from "./pages/admin/dashboard";
 import Lectures from "./pages/lectures";
+import "./_app.scss";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const [postData, setPostData] = useState({
@@ -31,6 +33,7 @@ const App = () => {
         <Route path="/login" exact component={Login} />
         <Route path="/admin-dashboard" exact component={AdminDashboard} />
       </Switch>
+      <Footer />
       {/* <Grow in>
         <Container>
           <Grid>

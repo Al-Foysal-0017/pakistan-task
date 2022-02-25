@@ -1,0 +1,42 @@
+@import "../../_base.scss";
+
+.footer {
+  margin-top: 10rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    &__item {
+      color: #6c63ff;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+  }
+  &__right {
+    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &__item {
+        color: #6c63ff;
+        font-weight: 600;
+        opacity: 0.8;
+      }
+    }
+    &__right {
+      opacity: 0.5;
+    }
+  }
+}
