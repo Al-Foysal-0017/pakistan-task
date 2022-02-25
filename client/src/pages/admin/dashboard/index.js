@@ -68,7 +68,7 @@ const AdminDashboard = (props) => {
   };
   useEffect(() => {
     if (redirect) {
-      props.history.push("/");
+      props.history.push("/lectures");
     }
     //   if (createErrors.length !== 0) {
     //     createErrors.map((err) => toast.error(err.msg));
