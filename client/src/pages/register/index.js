@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRegister } from "../../store/actions/auth.action";
+import "./_register.scss";
 
 const Register = () => {
   const [state, setState] = useState({
@@ -29,45 +30,45 @@ const Register = () => {
   //   }
   // }, [registerErrors, user]);
   return (
-    <div>
-      <form onSubmit={userRegister}>
+    <div className="register">
+      <form className="register__form" onSubmit={userRegister}>
         <div className="group">
-          <h3 className="form-heading">Register</h3>
+          <h3 className="register__heading">Register</h3>
         </div>
-        <div className="group">
+        <div className="register__feild">
           <input
             type="text"
             name="name"
-            className="group__control"
+            className="register__feild__input"
             placeholder="Enter Name"
             value={state.name}
             onChange={handleInputs}
           />
         </div>
-        <div className="group">
+        <div className="register__feild">
           <input
             type="email"
             name="email"
-            className="group__control"
+            className="register__feild__input"
             placeholder="Enter Email"
             value={state.email}
             onChange={handleInputs}
           />
         </div>
-        <div className="group">
+        <div className="register__feild">
           <input
             type="password"
             name="password"
-            className="group__control"
+            className="register__feild__input"
             placeholder="Create Password"
             value={state.password}
             onChange={handleInputs}
           />
         </div>
-        <div className="group">
+        <div className="register__feild">
           <input
             type="submit"
-            className="btn btn-default btn-block"
+            className="register__feild__btn"
             // value={loading ? "Loading..." : "Register"}
           />
         </div>

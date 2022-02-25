@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { postLogin } from "../../store/actions/auth.action";
 // import toast, { Toaster } from "react-hot-toast";
 // import { postLogin } from "../../store/asyncMethods/AuthMethods";
+import "./_login.scss";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -27,35 +28,35 @@ const Login = () => {
   //   }
   // }, [loginErrors]);
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <form onSubmit={userLogin}>
-        <div className="group">
-          <h3 className="form-heading">Login</h3>
+    <div className="login">
+      <form className="login__form" onSubmit={userLogin}>
+        <div className="login__heading">
+          <h3>Login</h3>
         </div>
-        <div className="group">
+        <div className="login__feild">
           <input
             type="email"
             name="email"
             value={state.email}
             onChange={handleInputs}
-            className="group__control"
+            className="login__feild__input"
             placeholder="Enter Email"
           />
         </div>
-        <div className="group">
+        <div className="login__feild">
           <input
             type="password"
             name="password"
             value={state.password}
             onChange={handleInputs}
-            className="group__control"
-            placeholder="Create Password"
+            className="login__feild__input"
+            placeholder="Enter Password"
           />
         </div>
-        <div className="group">
+        <div className="login__feild">
           <input
             type="submit"
-            className="btn btn-default btn-block"
+            className="login__feild__btn"
             //  value={loading ? "Loading..." : "Login"}
           />
         </div>
