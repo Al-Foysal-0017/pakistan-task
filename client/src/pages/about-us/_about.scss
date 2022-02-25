@@ -1,0 +1,52 @@
+@import "../../base";
+
+.about {
+  min-height: 100vh;
+  &__heading {
+    margin-top: 3rem;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 96px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__section {
+    margin-top: 3rem;
+    padding: 0 8rem;
+    &__header {
+      color: #6c63ff;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .about {
+    &__heading {
+      font-weight: 900;
+      font-size: 76px;
+    }
+
+    &__section {
+      margin-top: 3rem;
+      padding: 0 4rem;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .about {
+    &__heading {
+      font-weight: 900;
+      font-size: 48px;
+    }
+
+    &__section {
+      margin-top: 3rem;
+      padding: 0;
+    }
+  }
+}

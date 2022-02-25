@@ -1,12 +1,10 @@
-export const navRoutes = [
-  { name: "Lecture", route: "/" },
-  { name: "About Us", route: "/car" },
-  { name: "Contact Us", route: "/bicycle" },
-];
+export const navRoutes = [{ name: "Lecture", route: "/" }];
 
 export const navRoutesRight = [
   { name: "Admin", route: "/admin-dashboard" },
   { name: "Lectures", route: "/lectures" },
+  { name: "About Us", route: "/about-us" },
+  { name: "Contact Us", route: "/contact-us" },
   { name: "Sign In", route: "/login" },
   { name: "Sign Up", route: "/register" },
 ];

@@ -5,12 +5,17 @@ import "./NavAndSidebar.css";
 import { navRoutes, navRoutesRight } from "./NavLinks";
 import logo from "../../assets/images/logo.png";
 import { useSelector, useDispatch } from "react-redux";
+import { LOGOUT } from "../../store/types";
 
 const MobileNav = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user } = useSelector((state) => state.auth);
   // console.log("USER:>", user);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const logout = () => {
+    localStorage.removeItem("myToken");
+    dispatch({ type: LOGOUT });
+  };
 
   return (
     <header className="navbarAndSidebar">
@@ -55,6 +60,7 @@ const MobileNav = () => {
                 </NavLink>
               </div>
             ))}
+            <button onClick={logout}>Logout</button>
 
             {user && user?.name}
           </div>

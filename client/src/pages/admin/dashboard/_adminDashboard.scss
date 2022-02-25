@@ -1,0 +1,109 @@
+@import "../../../_base.scss";
+
+.admin {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //   justify-content: center;
+
+  &__heading {
+    margin-top: 3rem;
+    color: #6c63ff;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    -webkit-box-shadow: inset 0px 1px 13px -2px rgba(0, 0, 0, 0.97);
+    box-shadow: inset 0px 1px 13px -2px rgba(0, 0, 0, 0.97);
+
+    &__feild {
+      width: 400px;
+      margin-top: 1rem;
+      &__input {
+        height: 48px;
+        width: 400px;
+        margin-top: 3px;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 0 8px;
+      }
+
+      &__textFeild {
+        //   height: 48px;
+        width: 400px;
+        margin-top: 3px;
+        border-radius: 5px;
+        font-size: 13px;
+        padding: 8px;
+      }
+
+      &__btn {
+        background: #6c63ff;
+        color: #fff;
+        width: 100%;
+        border: none;
+        font-size: 20px;
+        height: 48px;
+        padding: 0 32px;
+        margin-top: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        //   margin-bottom: 5rem;
+      }
+    }
+  }
+
+  &__heading {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .admin {
+    &__heading {
+      font-size: 24px;
+    }
+
+    &__form {
+      &__feild {
+        width: 350px;
+        &__input {
+          width: 350px;
+          padding: 0 8px;
+        }
+
+        &__textFeild {
+          width: 350px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $small) {
+  .admin {
+    &__heading {
+      font-size: 24px;
+    }
+
+    &__form {
+      &__feild {
+        width: 250px;
+        &__input {
+          width: 250px;
+          padding: 0 8px;
+        }
+
+        &__textFeild {
+          width: 250px;
+        }
+      }
+    }
+  }
+}

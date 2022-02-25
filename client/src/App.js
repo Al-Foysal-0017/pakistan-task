@@ -10,43 +10,33 @@ import RouteLinks from "./private/RouteLinks";
 import AdminDashboard from "./pages/admin/dashboard";
 import Lectures from "./pages/lectures";
 import "./_app.scss";
+import AboutUs from "./pages/about-us";
+import ContactUs from "./pages/contact-us";
 // import Footer from "./components/footer/Footer";
 
 const App = () => {
-  const [postData, setPostData] = useState({
-    email: "xyz@gmail.com",
-    password: "1234567890",
-  });
-  const dispatch = useDispatch();
+  // const [postData, setPostData] = useState({
+  //   email: "xyz@gmail.com",
+  //   password: "1234567890",
+  // });
+  // const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createPost(postData));
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(createPost(postData));
+  // };
   return (
     <div>
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/about-us" exact component={AboutUs} />
+        <Route path="/contact-us" exact component={ContactUs} />
         <Route path="/lectures" exact component={Lectures} />
-        <Route path="/register" exact component={Register} />
-        <Route path="/login" exact component={Login} />
+        <RouteLinks path="/register" exact component={Register} />
+        <RouteLinks path="/login" exact component={Login} />
         <Route path="/admin-dashboard" exact component={AdminDashboard} />
       </Switch>
-      {/* <Footer /> */}
-      {/* <Grow in>
-        <Container>
-          <Grid>
-            <Grid item xs={12} sm={7}>
-              <Posts />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow> */}
-      {/* <button onClick={handleSubmit}>SUBMIT</button> */}
     </div>
   );
 };
