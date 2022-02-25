@@ -8,7 +8,7 @@ const {
   //   updateValidations,
   //   updateImage,
   //   deletePost,
-  //   home,
+  home,
   //   postDetails,
   //   postComment,
 } = require("../controllers/postController");
@@ -19,7 +19,7 @@ router.post("/create_post", createPost);
 // router.get("/posts/:id/:page", auth, fetchPosts);
 // router.get("/post/:id", auth, fetchPost);
 // router.get("/delete/:id", auth, deletePost);
-// router.get("/home/:page", home);
+router.get("/home", home);
 // router.get("/explore/:id", postDetails);
 // router.post("/comment", auth, postComment);
 module.exports = router;

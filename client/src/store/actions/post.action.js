@@ -157,21 +157,21 @@ export const updateAction = (editData) => {
 //     }
 //   };
 // };
-// export const homePosts = (page) => {
-//   return async (dispatch) => {
-//     dispatch({ type: SET_LOADER });
-//     try {
-//       const {
-//         data: { response, count, perPage },
-//       } = await axios.get(`/home/${page}`);
-//       dispatch({ type: CLOSE_LOADER });
-//       dispatch({ type: SET_POSTS, payload: { response, count, perPage } });
-//     } catch (error) {
-//       dispatch({ type: CLOSE_LOADER });
-//       console.log(error);
-//     }
-//   };
-// };
+export const homePosts = () => {
+  return async (dispatch) => {
+    dispatch({ type: SET_LOADER });
+    try {
+      const {
+        data: { response },
+      } = await axios.get("/home");
+      dispatch({ type: CLOSE_LOADER });
+      dispatch({ type: SET_POSTS, payload: { response } });
+    } catch (error) {
+      dispatch({ type: CLOSE_LOADER });
+      console.log(error);
+    }
+  };
+};
 // export const postDetails = (id) => {
 //   return async (dispatch) => {
 //     dispatch({ type: SET_LOADER });
