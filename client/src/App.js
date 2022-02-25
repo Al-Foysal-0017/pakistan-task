@@ -7,6 +7,8 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import RouteLinks from "./private/RouteLinks";
+import AdminDashboard from "./pages/admin/dashboard";
+import Lectures from "./pages/lectures";
 
 const App = () => {
   const [postData, setPostData] = useState({
@@ -24,8 +26,10 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/lectures" exact component={Lectures} />
         <Route path="/register" exact component={Register} />
         <Route path="/login" exact component={Login} />
+        <Route path="/admin-dashboard" exact component={AdminDashboard} />
       </Switch>
       {/* <Grow in>
         <Container>

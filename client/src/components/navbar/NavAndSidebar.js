@@ -4,9 +4,13 @@ import { Squash as Hamburger } from "hamburger-react";
 import "./NavAndSidebar.css";
 import { navRoutes, navRoutesRight } from "./NavLinks";
 import logo from "../../assets/images/logo.jpg";
+import { useSelector, useDispatch } from "react-redux";
 
 const MobileNav = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const { user } = useSelector((state) => state.auth);
+  // console.log("USER:>", user);
+  // const dispatch = useDispatch();
 
   return (
     <header className="navbarAndSidebar">
@@ -52,6 +56,8 @@ const MobileNav = () => {
                 </NavLink>
               </div>
             ))}
+
+            {user && user?.name}
           </div>
         </div>
       </nav>
