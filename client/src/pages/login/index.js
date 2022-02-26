@@ -31,7 +31,7 @@ const Login = () => {
     <div className="login">
       <form className="login__form" onSubmit={userLogin}>
         <div className="login__heading">
-          <h3>Login</h3>
+          <h3>Sign in</h3>
         </div>
         <div className="login__feild">
           <input

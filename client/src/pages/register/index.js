@@ -33,7 +33,7 @@ const Register = () => {
     <div className="register">
       <form className="register__form" onSubmit={userRegister}>
         <div className="group">
-          <h3 className="register__heading">Register</h3>
+          <h3 className="register__heading">Sign Up</h3>
         </div>
         <div className="register__feild">
           <input
