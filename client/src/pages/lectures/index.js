@@ -4,6 +4,10 @@ import { homePosts } from "../../store/actions/post.action";
 import { REDIRECT_FALSE, REMOVE_MESSAGE } from "../../store/types";
 // import { homePosts } from "../store/asyncMethods/PostMethods";
 import toast, { Toaster } from "react-hot-toast";
+import "./_Lecture.scss";
+import Container from "../../components/container/index";
+import Footer from "../../components/footer/Footer";
+import { Link } from "react-router-dom";
 
 const Lectures = () => {
   const dispatch = useDispatch();
@@ -23,9 +27,9 @@ const Lectures = () => {
       toast.success(message);
       dispatch({ type: REMOVE_MESSAGE });
     }
-  }, [message]);
+  }, [dispatch, message, redirect]);
   return (
-    <div>
+    <Container>
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -35,31 +39,65 @@ const Lectures = () => {
           },
         }}
       />
-      <h1>All Lectures</h1>
-      {user ? (
-        <>
-          {posts?.map((item, index) => (
-            <div
-              key={index}
-              style={{ border: "2px solid #000", marginTop: "16px" }}
-            >
-              <div>
-                <img
-                  style={{ width: "50px", height: "50px" }}
-                  src={item?.image}
-                  alt=""
-                />
-              </div>
-              <div>{item?.title}</div>
-              <div>{item?.userName}</div>
-              <div>{item?.description}</div>
+      <div className="lecture">
+        <h2 className="lecture__heading">Choose Urdu Course Level</h2>
+
+        {/* <div class="container">
+        <div class="card__container">
+          <div class="card">
+            <div class="card__content">
+              <h3 class="card__header">Card 1</h3>
+              <p class="card__info">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+              <button class="card__button">Read now</button>
             </div>
-          ))}
-        </>
-      ) : (
-        "Please Login First"
-      )}
-    </div>
+          </div>
+          <div class="card">
+            <div class="card__content">
+              <h3 class="card__header">Card 2</h3>
+              <p class="card__info">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+              <button class="card__button">Read now</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__content">
+              <h3 class="card__header">Card 3</h3>
+              <p class="card__info">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+              <button class="card__button">Read now</button>
+            </div>
+          </div>
+        </div>
+      </div> */}
+        {/* <div style={{ marginTop: "5rem" }} /> */}
+
+        <div className="lecture__card">
+          <div className="lecture__card__level">Beginner Level</div>
+          <Link to="/lectures/beginner">
+            <button className="lecture__card__btn">Get Started</button>
+          </Link>
+        </div>
+
+        <div className="lecture__card">
+          <div className="lecture__card__level">Intermiddate Level</div>
+          <Link to="/lectures/intermiddate">
+            <button className="lecture__card__btn">Get Started</button>
+          </Link>
+        </div>
+
+        <div className="lecture__card">
+          <div className="lecture__card__level">Advance Level</div>
+          <Link to="/lectures/advance">
+            <button className="lecture__card__btn">Get Started</button>
+          </Link>
+        </div>
+      </div>
+      <Footer />
+    </Container>
   );
 };
 

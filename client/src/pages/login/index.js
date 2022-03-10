@@ -4,10 +4,11 @@ import { postLogin } from "../../store/actions/auth.action";
 // import toast, { Toaster } from "react-hot-toast";
 // import { postLogin } from "../../store/asyncMethods/AuthMethods";
 import "./_login.scss";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const dispatch = useDispatch();
-  // const { loginErrors, loading } = useSelector((state) => state.AuthReducer);
+  const { loginErrors, loading } = useSelector((state) => state.auth);
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -22,13 +23,22 @@ const Login = () => {
     e.preventDefault();
     dispatch(postLogin(state));
   };
-  // useEffect(() => {
-  //   if (loginErrors.length > 0) {
-  //     loginErrors.map((error) => toast.error(error.msg));
-  //   }
-  // }, [loginErrors]);
+  React.useEffect(() => {
+    if (loginErrors?.length > 0) {
+      loginErrors.map((error) => toast.error(error.msg));
+    }
+  }, [loginErrors]);
   return (
     <div className="login">
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            fontSize: "14px",
+          },
+        }}
+      />
       <form className="login__form" onSubmit={userLogin}>
         <div className="login__heading">
           <h3>Sign in</h3>
@@ -57,7 +67,7 @@ const Login = () => {
           <input
             type="submit"
             className="login__feild__btn"
-            //  value={loading ? "Loading..." : "Login"}
+            value={loading ? "Loading..." : "Sign in"}
           />
         </div>
       </form>

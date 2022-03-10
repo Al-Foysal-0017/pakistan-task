@@ -83,6 +83,37 @@
   color: blue;
   font-weight: 700;
 }
+.nav-username {
+  color: blue;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+.adminBtn {
+  margin-right: 8px;
+}
+.signBtn {
+  background: #fff;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.logoutBtn {
+  background: #fff;
+  color: tomato;
+  border: 1px solid tomato;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
 .transform {
   --tw-translate-x: 0;
   --tw-translate-y: 0;

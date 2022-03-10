@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Squash as Hamburger } from "hamburger-react";
 import "./NavAndSidebar.css";
 import { navRoutes, navRoutesRight } from "./NavLinks";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { LOGOUT } from "../../store/types";
 import Container from "../container/index";
@@ -26,7 +26,10 @@ const MobileNav = () => {
         <div className="navbarContainerWrapper">
           {/* LEFT NAVBAR */}
           <div className="navbarContainerLeft">
-            <div className="navbarContainerHamburger">
+            <div
+              style={{ marginRight: "8px" }}
+              className="navbarContainerHamburger"
+            >
               <Hamburger
                 toggle={setOpenSidebar}
                 toggled={openSidebar}
@@ -40,8 +43,8 @@ const MobileNav = () => {
                     src={logo}
                     alt="logo"
                     style={{
-                      height: "60px",
-                      borderRadius: "16px",
+                      height: "50px",
+                      // borderRadius: "16px",
                     }}
                   />
                 </Link>
@@ -52,7 +55,7 @@ const MobileNav = () => {
           <div className="navbarContainerRightItems">
             {user.admin && (
               <NavLink
-                className="link"
+                className="link adminBtn"
                 activeClassName="activeClassNameOfSidebar"
                 exact
                 to="/admin-dashboard"
@@ -72,30 +75,31 @@ const MobileNav = () => {
                 </NavLink>
               </div>
             ))}
+            {user && <div className="nav-username">Hi, {user?.name}</div>}
             {user ? (
-              <button onClick={logout}>Logout</button>
+              <button className="logoutBtn" onClick={logout}>
+                Logout
+              </button>
             ) : (
               <>
                 <NavLink
-                  className="link"
+                  className="link signBtn"
                   activeClassName="activeClassNameOfSidebar"
                   exact
                   to="/login"
                 >
                   Sign in
                 </NavLink>
-                <NavLink
-                  className="link"
+                {/* <NavLink
+                  className="link signBtn"
                   activeClassName="activeClassNameOfSidebar"
                   exact
                   to="/register"
                 >
                   Sign up
-                </NavLink>
+                </NavLink> */}
               </>
             )}
-
-            {user && user?.name}
           </div>
         </div>
       </Container>
@@ -117,6 +121,18 @@ const MobileNav = () => {
           color="#6C63FF"
         />
         <div style={{ marginTop: "3rem" }} />
+        <Link to="/">
+          <img
+            src={logo}
+            alt="logo"
+            style={{
+              height: "80px",
+              // borderRadius: "16px",
+              marginBottom: "2rem",
+            }}
+            onClick={() => setOpenSidebar(false)}
+          />
+        </Link>
         <ul className="SidebarItems">
           {navRoutes.map((item) => (
             <li key={item.name} className="SidebarItem">
@@ -134,6 +150,17 @@ const MobileNav = () => {
         </ul>
 
         <ul className="SidebarItems">
+          {user.admin && (
+            <NavLink
+              className="link adminBtn"
+              activeClassName="activeClassNameOfSidebar"
+              exact
+              to="/admin-dashboard"
+              onClick={() => setOpenSidebar(false)}
+            >
+              Admin
+            </NavLink>
+          )}
           {navRoutesRight.map((item) => (
             <li key={item.name} className="SidebarItem">
               <NavLink
@@ -147,6 +174,36 @@ const MobileNav = () => {
               </NavLink>
             </li>
           ))}
+          {user ? (
+            <button
+              style={{
+                background: "#fff",
+                border: "1px solid tomato",
+                color: "tomato",
+                padding: "5px",
+                fontWeight: "bold",
+                marginTop: "2rem",
+                marginBottom: "5rem",
+                borderRadius: "5px",
+              }}
+              className=""
+              onClick={logout}
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <NavLink
+                className="link"
+                activeClassName="activeClassNameOfSidebar"
+                exact
+                to="/login"
+                onClick={() => setOpenSidebar(false)}
+              >
+                Sign in
+              </NavLink>
+            </>
+          )}
         </ul>
       </div>
     </header>

@@ -1,4 +1,6 @@
-export const navRoutes = [{ name: "Home", route: "/" }];
+export const navRoutes = [
+  // { name: "Home", route: "/" }
+];
 
 export const navRoutesRight = [
   // { name: "Admin", route: "/admin-dashboard" },

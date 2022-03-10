@@ -18,6 +18,8 @@ import {
   RESET_UPDATE_IMAGE_ERRORS,
   SET_DETAILS,
   COMMENTS,
+  SET_LOADER_POST,
+  CLOSE_LOADER_POST,
 } from "../types";
 const initState = {
   loading: false,
@@ -36,9 +38,9 @@ const initState = {
 };
 export const PostReducer = (state = initState, action) => {
   const { type, payload } = action;
-  if (type === SET_LOADER) {
+  if (type === SET_LOADER_POST) {
     return { ...state, loading: true };
-  } else if (type === CLOSE_LOADER) {
+  } else if (type === CLOSE_LOADER_POST) {
     return { ...state, loading: false };
   } else if (type === CREATE_ERRORS) {
     return { ...state, createErrors: payload };

@@ -1,16 +1,14 @@
 {
-  "name": "mernBlog",
+  "name": "lecturer",
   "version": "1.0.0",
+  "engines": {
+    "node":"14.18.0",
+    "npm":"6.14.15"
+  },
   "private": true,
-  "proxy":"http://localhost:5000",
   "scripts": {
     "server": "nodemon index.js",
-    "start": "node index.js",
-    "client": "npm start --prefix client",
-    "clientInstall": "npm install --prefix client",
-    "build": "npm run build --prefix client",
-    "heroku-postbuild": "npm run clientInstall && npm run build",
-    "dev": "concurrently \" npm run server  \" \" npm run client \""
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

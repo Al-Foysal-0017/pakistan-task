@@ -18,7 +18,11 @@ export const postRegister = (state) => {
     };
     dispatch({ type: SET_LOADER });
     try {
-      const { data } = await axios.post("/register", state, config);
+      const { data } = await axios.post(
+        "https://calm-tor-08687.herokuapp.com/register",
+        state,
+        config
+      );
       console.log("RegisterData:", data);
       dispatch({ type: CLOSE_LOADER });
       localStorage.setItem("myToken", data.token);

@@ -1,7 +1,7 @@
 const Post = require("../models/Post");
 
 module.exports.createPost = async (req, res) => {
-  const { title, description, slug, id, name, image } = req.body;
+  const { title, description, slug, id, name, image, level } = req.body;
   console.log(req.body);
   try {
     const response = await Post.create({
@@ -11,6 +11,7 @@ module.exports.createPost = async (req, res) => {
       userName: name,
       userId: id,
       image,
+      level,
     });
     return res.status(200).json({
       msg: "Your post has been created successfully",
@@ -30,7 +31,7 @@ module.exports.home = async (req, res) => {
     const posts = await Post.find({})
       // .skip(skip)
       // .limit(perPage)
-      .sort({ updatedAt: -1 });
+      .sort({ updatedAt: 1 });
     return res.status(200).json({ response: posts });
   } catch (error) {
     return res.status(500).json({ errors: error, msg: error.message });

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRegister } from "../../store/actions/auth.action";
 import "./_register.scss";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [state, setState] = useState({
@@ -9,9 +10,7 @@ const Register = () => {
     email: "",
     password: "",
   });
-  // const { loading, registerErrors, user } = useSelector(
-  //   (state) => state.AuthReducer
-  // );
+  const { loading, registerErrors, user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   const handleInputs = (e) => {
@@ -24,13 +23,22 @@ const Register = () => {
     e.preventDefault();
     dispatch(postRegister(state));
   };
-  // useEffect(() => {
-  //   if (registerErrors.length > 0) {
-  //     registerErrors.map((error) => toast.error(error.msg));
-  //   }
-  // }, [registerErrors, user]);
+  useEffect(() => {
+    if (registerErrors?.length > 0) {
+      registerErrors.map((error) => toast.error(error.msg));
+    }
+  }, [registerErrors, user]);
   return (
     <div className="register">
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            fontSize: "14px",
+          },
+        }}
+      />
       <form className="register__form" onSubmit={userRegister}>
         <div className="group">
           <h3 className="register__heading">Sign Up</h3>
@@ -69,7 +77,7 @@ const Register = () => {
           <input
             type="submit"
             className="register__feild__btn"
-            // value={loading ? "Loading..." : "Register"}
+            value={loading ? "Loading..." : "Sign Up"}
           />
         </div>
       </form>

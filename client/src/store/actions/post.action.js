@@ -16,6 +16,8 @@ import {
   UPDATE_IMAGE_ERROR,
   SET_DETAILS,
   COMMENTS,
+  CLOSE_LOADER_POST,
+  SET_LOADER_POST,
 } from "../types";
 
 export const setAdminPost = (postData) => {
@@ -23,7 +25,7 @@ export const setAdminPost = (postData) => {
     const {
       auth: { token },
     } = getState();
-    dispatch({ type: SET_LOADER });
+    dispatch({ type: SET_LOADER_POST });
     try {
       const config = {
         headers: {
@@ -39,16 +41,20 @@ export const setAdminPost = (postData) => {
       };
       const {
         data: { msg },
-      } = await axios.post("/create_post", postData, config);
+      } = await axios.post(
+        "https://calm-tor-08687.herokuapp.com/create_post",
+        postData,
+        config
+      );
       console.log("Post Action:>>", msg);
-      dispatch({ type: CLOSE_LOADER });
+      dispatch({ type: CLOSE_LOADER_POST });
       dispatch({ type: REMOVE_ERRORS });
       dispatch({ type: REDIRECT_TRUE });
       dispatch({ type: SET_MESSAGE, payload: msg });
     } catch (error) {
       console.log(error.response);
       const { errors } = error.response.data;
-      dispatch({ type: CLOSE_LOADER });
+      dispatch({ type: CLOSE_LOADER_POST });
       dispatch({ type: CREATE_ERRORS, payload: errors });
     }
   };
@@ -163,7 +169,7 @@ export const homePosts = () => {
     try {
       const {
         data: { response },
-      } = await axios.get("/home");
+      } = await axios.get("https://calm-tor-08687.herokuapp.com/home");
       dispatch({ type: CLOSE_LOADER });
       dispatch({ type: SET_POSTS, payload: { response } });
     } catch (error) {

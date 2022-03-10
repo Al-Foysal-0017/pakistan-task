@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:5000";
-const urlLogin = "http://localhost:5000/login";
+const url = "https://calm-tor-08687.herokuapp.com/";
+const urlLogin = "https://calm-tor-08687.herokuapp.com/login";
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(urlLogin, newPost);
